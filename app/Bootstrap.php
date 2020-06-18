@@ -19,7 +19,7 @@ class Bootstrap {
                 if(method_exists($this->controller, $this->action)){
                     return $this->controller;
                 } else {
-                    echo '<h1>Metoda nie istnieje</h1>';
+                    echo '<h1>Metoda nie istnieje</h1>'.$paramets;
                     return;
                 }
             } else {
