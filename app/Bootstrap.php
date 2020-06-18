@@ -7,7 +7,7 @@ class Bootstrap {
 
     public function __construct($request){
         $this->request = str_replace(ROOT_DOMAIN, "/", $request);
-        $this->action = 'index.php';
+        $this->action = 'index';
         $this->argument = '';
         $this->processRequest();
     }
@@ -23,7 +23,9 @@ class Bootstrap {
                     foreach ($paramets as $text){
                         echo "- ".$text.'</br>';
                     }
-                    echo $this->request;
+                    echo 'request-'.$this->request;
+                    echo 'action-'.$this->action;
+                    echo 'argument-'.$this->argument;
                     return;
                 }
             } else {
