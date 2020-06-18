@@ -20,12 +20,14 @@ class Bootstrap {
                     return $this->controller;
                 } else {
                     echo '<h1>Metoda nie istnieje</h1>';
+                    //REMARK: blok sprawdzający zapytania jak się klasa rozleci
                     foreach ($paramets as $text){
                         echo "- ".$text.'</br>';
                     }
                     echo 'request-'.$this->request;
                     echo 'action-'.$this->action;
                     echo 'argument-'.$this->argument;
+                    //koniec bloku sprawdzającego
                     return;
                 }
             } else {
