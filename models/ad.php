@@ -30,4 +30,31 @@ class Ad extends Model{
 
         return false;
     }
+
+    public function remove($id){
+        if(intval($id)>0){
+            $this->query('SELECT * FROM ads WHERE id = :id AND user_id = :user_id');
+            $this->bind(':id', $id);
+            $this->bind(':user_id', $_SESSION['user_data']['id']);
+            $row=$this->single();
+
+            if($row){
+                $this->query('DELETE FROM ads WHERE id = :id');
+                $this->bind(':id', $id);
+                $this->execute();
+
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function get($id){
+        if(intval($id) > 0){
+            $this->query('SELECT * FROM ads WHERE id = :id');
+            $this->bind(':id', $id);
+            return $this->single();
+        }
+        return null;
+    }
 }

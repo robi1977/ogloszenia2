@@ -33,4 +33,27 @@ class AdsController extends Controller{
 
         $this->returnView('add', true);
     }
+
+    protected function remove($id){
+        if(!isset($_SESSION['is_logged_in'])){
+            header('Location: '.ROOT_URL.'ads');
+        }
+
+        $model = new Ad();
+        if($model->remove($id)){
+            Messages::setMsg('Ogłoszenie usunięte', 'success');
+        } else {
+            Messages::setMsg('Nie usunięto ogłoszenia', 'error');
+        }
+        $this->redirect('ads');
+    }
+
+    protected function edit($id){
+        if(!isset($_SESSION['is_logged_in'])){
+            header('Location: '.ROOT_URL.'ads');
+        }
+        
+        $model = new Ad();
+        $this->returnView('edit', $model->get($id));
+    }
 }
